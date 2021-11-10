@@ -26,16 +26,41 @@ RSpec.describe Medusa do
     medusa = Medusa.new('Cassiopeia')
     victim = Person.new('Perseus')
 
-    assert(victim.stoned?).to be false
+    expect(victim.stoned?).to be false
     medusa.stare(victim)
-    assert(victim.stoned?).to be true
+    expect(victim.stoned?).to be true
   end
 
   it 'can only have three victims' do
-    # your code here
+    medusa = Medusa.new('Sharon')
+    victims = [Person.new('Ian'),
+               Person.new('James'),
+               Person.new('Chris')]
+    victims.each do |victim|
+      medusa.stare(victim)
+      expect(victim.stoned?).to be true
+    end
+    expect(medusa.statues.count).to eq(3)
+
+    victim = Person.new('Andrew')
+    medusa.stare(victim)
+    expect(medusa.statues.count).to eq(3)
   end
 
   it 'if a fourth victim is stoned the first is unstoned' do
-    # your code here
+    medusa = Medusa.new('Sharon')
+    victims = [Person.new('Ian'),
+               Person.new('James'),
+               Person.new('Chris')]
+
+    victims.each do |victim|
+      medusa.stare(victim)
+      expect(victim.stoned?).to be true
+    end
+
+    victim = Person.new('Andrew')
+    medusa.stare(victim)
+    expect(victim.stoned?).to be true
+    expect(victims[0].stoned?).to be false
   end
 end
