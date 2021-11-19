@@ -1,5 +1,5 @@
 require 'rspec'
-require './lib/medusa'
+require '../lib/medusa'
 
 RSpec.describe Medusa do
   it 'has a name' do

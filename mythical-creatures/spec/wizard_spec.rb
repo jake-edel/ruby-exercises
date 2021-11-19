@@ -1,5 +1,5 @@
 require 'rspec'
-require './lib/wizard'
+require_relative '../lib/wizard'
 
 RSpec.describe Wizard do
   it 'has a name' do
@@ -44,7 +44,6 @@ RSpec.describe Wizard do
     wizard = Wizard.new('Anthony')
     # .cast returns "MAGIC MISSILE!"
     expect(wizard.cast).to eq('MAGIC MISSLE!')
-
   end
 
   it 'gets tired after casting three spells' do

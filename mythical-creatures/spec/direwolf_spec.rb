@@ -1,5 +1,5 @@
-require './spec/spec-helper'
-require './lib/direwolf'
+require './spec_helper'
+require '../lib/direwolf'
 
 RSpec.describe Direwolf do
   it 'has a name' do
@@ -23,7 +23,7 @@ RSpec.describe Direwolf do
   end
 
   it 'can have another home and be another size' do
-    wolf = Direwolf.new('Shaggydog', "Winterfell", "Smol Pupper")
+    wolf = Direwolf.new('Shaggydog', 'Winterfell', 'Smol Pupper')
 
     expect(wolf.name).to eq('Shaggydog')
     expect(wolf.home).to eq('Winterfell')
@@ -64,16 +64,16 @@ RSpec.describe Direwolf do
   end
 
   it 'can only protect two Starks at a time' do
-    summer_wolf = Direwolf.new('Summer', "Winterfell")
-    lady_wolf = Direwolf.new('Lady', "Winterfell")
+    summer_wolf = Direwolf.new('Summer', 'Winterfell')
+    lady_wolf = Direwolf.new('Lady', 'Winterfell')
     sansa_stark = Stark.new('Sansa')
-    john_stark = Stark.new('Jon')
+    jon_stark = Stark.new('Jon')
     rob_stark = Stark.new('Rob')
     bran_stark = Stark.new('Bran')
     arya_stark = Stark.new('Arya')
 
     summer_wolf.protects(sansa_stark)
-    summer_wolf.protects(john_stark)
+    summer_wolf.protects(jon_stark)
     lady_wolf.protects(rob_stark)
     lady_wolf.protects(bran_stark)
     lady_wolf.protects(arya_stark)
@@ -93,7 +93,7 @@ RSpec.describe Direwolf do
   end
 
   it 'protects the Starks' do
-    wolf = Direwolf.new('Nymeria', "Winterfell")
+    wolf = Direwolf.new('Nymeria', 'Winterfell')
     arya_stark = Stark.new('Arya')
     sansa_stark = Stark.new('Sansa')
 
@@ -110,7 +110,7 @@ RSpec.describe Direwolf do
   end
 
   it 'will not hunt white walkers when protecting Starks' do
-    wolf = Direwolf.new('Nymeria', "Winterfell")
+    wolf = Direwolf.new('Nymeria', 'Winterfell')
     arya_stark = Stark.new('Arya')
 
     wolf.protects(arya_stark)
@@ -119,8 +119,8 @@ RSpec.describe Direwolf do
   end
 
   it 'can leave and stop protecting Starks' do
-    summer_wolf = Direwolf.new('Summer', "Winterfell")
-    lady_wolf = Direwolf.new('Lady', "Winterfell")
+    summer_wolf = Direwolf.new('Summer', 'Winterfell')
+    lady_wolf = Direwolf.new('Lady', 'Winterfell')
     sansa_stark = Stark.new('Sansa')
     arya_stark = Stark.new('Arya')
 
@@ -129,13 +129,13 @@ RSpec.describe Direwolf do
     summer_wolf.leaves(arya_stark)
 
     expect(summer_wolf.starks_to_protect).to be_empty
-    expect(lady_wolf.starks_to_protect.first.name).to be('Sansa')
+    expect(lady_wolf.starks_to_protect.first.name).to eq('Sansa')
     expect(arya_stark.safe?).to be false
   end
 
   it 'returns the Stark object when it leaves' do
-    summer_wolf = Direwolf.new('Summer', "Winterfell")
-    lady_wolf = Direwolf.new('Lady', "Winterfell")
+    summer_wolf = Direwolf.new('Summer', 'Winterfell')
+    lady_wolf = Direwolf.new('Lady', 'Winterfell')
     sansa_stark = Stark.new('Sansa')
     arya_stark = Stark.new('Arya')
     rickon_stark = Stark.new('Rickon')
@@ -143,10 +143,10 @@ RSpec.describe Direwolf do
     summer_wolf.protects(arya_stark)
     lady_wolf.protects(sansa_stark)
     summer_wolf.leaves(arya_stark)
+    lady_wolf.protects(rickon_stark)
 
     expected = lady_wolf.leaves(rickon_stark)
 
     expect(expected.name).to eq('Rickon')
   end
-
 end

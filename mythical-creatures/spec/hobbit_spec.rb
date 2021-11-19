@@ -1,5 +1,5 @@
-require './spec/spec_helper'
-require './lib/hobbit'
+require './spec_helper'
+require '../lib/hobbit'
 
 RSpec.describe Hobbit do
   it 'has a name' do
