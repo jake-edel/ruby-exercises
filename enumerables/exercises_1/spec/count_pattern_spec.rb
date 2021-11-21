@@ -37,25 +37,29 @@ RSpec.describe 'Count Pattern Test' do
   it 'even numbers' do
     numbers = [9, 2, 1, 3, 18, 39, 71, 4, 6]
     tally = 0
-    
+    numbers.each { |variable| tally += 1 if variable.even?  }
     expect(tally).to eq(4)
   end
 
-  xit 'multiples of 5' do
+  it 'multiples of 5' do
     numbers = [2, 5, 19, 25, 35, 67]
-    # Your code goes here
+    tally = 0
+    numbers.each { |variable| tally += 1 if variable % 5 == 0 }
     expect(tally).to eq(3)
   end
 
-  xit 'round prices' do
+  it 'round prices' do
     prices = [1.0, 3.9, 5.99, 18.5, 20.0]
-    # Your code goes here
+    tally = 0
+    # require 'pry-byebug'; binding.pry
+    prices.each { |variable| tally += 1 if variable % 1  ==  0 }
     expect(tally).to eq(2)
   end
 
-  xit 'four letter words' do
+  it 'four letter words' do
     words = ["bake", "bark", "corn", "apple", "wart", "bird", "umbrella", "fart"]
-    # Your code goes here
+    tally = 0
+    words.each { |variable| tally += 1 if variable.length == 4 }
     expect(tally).to eq(6)
   end
 
