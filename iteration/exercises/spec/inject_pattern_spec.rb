@@ -172,11 +172,10 @@ RSpec.describe 'inject pattern test' do
     # Iterate over the menu hash above to create a printable
     # version of the menu
 
-    printable_menu = "Menu:\n"\
+    printable_menu = "Menu:\n"
     menu.each do |item|
       printable_menu += "- #{item[1][:flavors][0...-1].join(', ')}, and #{item[1][:flavors].last} #{item[0]} #{item[1][:gluten_free] ? '(gluten free)' : '(non gluten free)'}\n"
     end
-
 
     expected =  "Menu:\n"\
                 "- chicken, potato, steak, and veggie empanadas (non gluten free)\n"\

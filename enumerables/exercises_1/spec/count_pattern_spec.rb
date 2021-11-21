@@ -9,31 +9,35 @@ RSpec.describe 'Count Pattern Test' do
     expect(tally).to eq(3)
   end
 
-  xit 'counts numbers greater than 17' do
+  it 'counts numbers greater than 17' do
     numbers = [9, 18, 12, 17, 1, 3, 99]
     tally = 0
     numbers.each do |number|
-      # Your code goes here
+      tally += 1 if number > 17
     end
     expect(tally).to eq(2)
   end
 
-  xit 'words that are uppercase' do
+  it 'words that are uppercase' do
     words = ["trousers", "SOCKS", "sweater", "Cap", "SHOE", "TIE"]
     tally = 0
-    # Your code goes here
+    words.each do |word|
+      tally += 1 if word === word.upcase
+    end
     expect(tally).to eq(3)
   end
 
-  xit 'words ending in ing' do
+  it 'words ending in ing' do
     words = ["thought", "brake", "shin", "juice", "trash"]
-    # Your code goes here
+    tally = 0
+    words.each { |variable| tally += 1 if variable.end_with?('ing') }
     expect(tally).to eq(0)
   end
 
-  xit 'even numbers' do
+  it 'even numbers' do
     numbers = [9, 2, 1, 3, 18, 39, 71, 4, 6]
-    # Your code goes here
+    tally = 0
+    
     expect(tally).to eq(4)
   end
 

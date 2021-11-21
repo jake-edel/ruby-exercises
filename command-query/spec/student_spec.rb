@@ -8,7 +8,7 @@ RSpec.describe Student do
     expect(student.grade).to eq('C')
   end
 
-  it 'can improve its grade' do
+  it 'can improve xits grade' do
     student = Student.new
 
     student.study
@@ -47,7 +47,7 @@ RSpec.describe Student do
     student = Student.new
 
     100.times { student.study }
-    p student.grade
+    student.slack_off
 
     expect(student.grade).to eq('B')
   end

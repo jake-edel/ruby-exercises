@@ -49,9 +49,7 @@ RSpec.describe 'map pattern' do
     words = %w[green sheep travel least boat]
     without_vowels = []
     words.each do |word|
-      require 'pry-byebug'
-      binding.pry
-      without_vowels << word
+      without_vowels << word.gsub!(/[aeiou]/, '')
     end
     expect(without_vowels).to  eq(%w[grn shp trvl lst bt])
   end
@@ -59,7 +57,7 @@ RSpec.describe 'map pattern' do
   it 'trims last letter' do
     animals = %w[dog cat mouse frog platypus]
     trimmed = []
-    animals.each { |_animal| trimmed << animals[0..-1] }
+    animals.each { |animal| trimmed << animal[0..-2] }
     expect(trimmed).to eq(%w[do ca mous fro platypu])
   end
 end
